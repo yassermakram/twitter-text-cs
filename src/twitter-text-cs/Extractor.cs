@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace TwitterText
 {
@@ -19,5 +20,20 @@ namespace TwitterText
         }
 
 
+
+        public string[] ExtractMentionedScreennames(string tweet)
+        {
+            if (string.IsNullOrEmpty(tweet))
+                return null;
+            var mentionExpression = new Regex("(^|[^a-z0-9_])@([a-z0-9_]{1,20})(?=(.|$))", RegexOptions.IgnoreCase);
+            var matches = mentionExpression.Match(tweet);
+            var result = new List<string>();
+            while (matches.Success)
+            {
+                result.Add(matches.Result("$2"));
+                matches = matches.NextMatch();
+            }
+            return result.ToArray();
+        }
     }
 }

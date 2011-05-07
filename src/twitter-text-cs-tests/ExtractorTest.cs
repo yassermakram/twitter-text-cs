@@ -31,5 +31,31 @@ namespace twitter_text_cs_tests
             Assert.AreEqual("user", _extractor.ExtractReplyScreenname(" @user reply"), "Failed to extract reply at the start");
         }
         #endregion
+
+        #region Mention Tests
+        [Test]
+        public void When_Mention_At_The_Beginning_Should_Return_User()
+        {
+            Assert.AreEqual(new string[] { "user" }, _extractor.ExtractMentionedScreennames("@user mention"), "Failed to extract mention at the beginning");
+        }
+
+        [Test]
+        public void When_Mention_At_The_Beginning_With_Whitespace_Should_Return_User()
+        {
+            Assert.AreEqual(new string[] { "user" }, _extractor.ExtractMentionedScreennames(" @user mention"), "Failed to extract mention at the beginning with white space");
+        }
+
+        [Test]
+        public void When_Mention_At_The_Middle_Should_Return_User()
+        {
+            Assert.AreEqual(new string[] { "user" }, _extractor.ExtractMentionedScreennames("start @user mention"), "Failed to extract mention at the beginning with white space");
+        }
+
+        [Test]
+        public void When_Mention_Multiple_Users_Should_Return_All()
+        {
+            Assert.AreEqual(new string[] { "user", "another" }, _extractor.ExtractMentionedScreennames("start @user mention and @another"), "Failed to extract mention at the beginning with white space");
+        }
+        #endregion
     }
 }
