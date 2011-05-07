@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "twitter-text-cs", "twitter-text-cs\twitter-text-cs.csproj", "{29A11E1A-982E-4AF4-BEE3-73C006BCFE74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "twitter-text-cs-tests", "twitter-text-cs-tests\twitter-text-cs-tests.csproj", "{65CF382D-4AE2-400B-A735-D5DC594B8E41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29A11E1A-982E-4AF4-BEE3-73C006BCFE74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29A11E1A-982E-4AF4-BEE3-73C006BCFE74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29A11E1A-982E-4AF4-BEE3-73C006BCFE74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29A11E1A-982E-4AF4-BEE3-73C006BCFE74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65CF382D-4AE2-400B-A735-D5DC594B8E41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65CF382D-4AE2-400B-A735-D5DC594B8E41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65CF382D-4AE2-400B-A735-D5DC594B8E41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65CF382D-4AE2-400B-A735-D5DC594B8E41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
