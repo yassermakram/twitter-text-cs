@@ -8,13 +8,16 @@ namespace TwitterText
         {
             if (string.IsNullOrEmpty(tweet))
                 return null;
-            var replyExpression = new Regex("^@([a-z0-9_]{1,20}).*", RegexOptions.IgnoreCase);
+
+            var replyExpression = new Regex("^(?:[ ])*@([a-z0-9_]{1,20}).*", RegexOptions.IgnoreCase);
 
             var match = replyExpression.Match(tweet);
             if (match.Success)
-                return match.Groups[1].Value;
+                return match.Result("$1");
             else
                 return null;
         }
+
+
     }
 }
