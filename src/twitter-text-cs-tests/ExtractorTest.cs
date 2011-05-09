@@ -14,19 +14,19 @@ namespace twitter_text_cs_tests
 
         #region Reply Tests
         [Test]
-        public void Reply_At_TheStart_Should_Return_User()
+        public void reply_at_start_should_return_user()
         {
             Assert.AreEqual("user", _extractor.ExtractReplyScreenname("@user reply"), "Failed to extract reply at the start");
         }
 
         [Test]
-        public void When_Extracting_Null_Should_Return_Null()
+        public void extracting_null_should_return_null()
         {
             Assert.AreEqual(null, _extractor.ExtractReplyScreenname(null), "Failed to parse null tweet");
         }
 
         [Test]
-        public void When_Extracting_Reply_With_Leading_Space_Should_Return_User()
+        public void reply_with_leading_space_should_return_user()
         {
             Assert.AreEqual("user", _extractor.ExtractReplyScreenname(" @user reply"), "Failed to extract reply at the start");
         }
@@ -34,28 +34,30 @@ namespace twitter_text_cs_tests
 
         #region Mention Tests
         [Test]
-        public void When_Mention_At_The_Beginning_Should_Return_User()
+        public void mention_at_The_beginning_should_return_user()
         {
             Assert.AreEqual(new string[] { "user" }, _extractor.ExtractMentionedScreennames("@user mention"), "Failed to extract mention at the beginning");
         }
 
         [Test]
-        public void When_Mention_At_The_Beginning_With_Whitespace_Should_Return_User()
+        public void mention_at_the_beginning_with_whitespace_should_return_user()
         {
             Assert.AreEqual(new string[] { "user" }, _extractor.ExtractMentionedScreennames(" @user mention"), "Failed to extract mention at the beginning with white space");
         }
 
         [Test]
-        public void When_Mention_At_The_Middle_Should_Return_User()
+        public void mention_at_the_middle_should_return_user()
         {
-            Assert.AreEqual(new string[] { "user" }, _extractor.ExtractMentionedScreennames("start @user mention"), "Failed to extract mention at the beginning with white space");
+            Assert.AreEqual(new string[] { "user" }, _extractor.ExtractMentionedScreennames("start @user mention"), "Failed to extract mention at the middle");
         }
 
         [Test]
-        public void When_Mention_Multiple_Users_Should_Return_All()
+        public void mention_multiple_users_should_return_all()
         {
-            Assert.AreEqual(new string[] { "user", "another" }, _extractor.ExtractMentionedScreennames("start @user mention and @another"), "Failed to extract mention at the beginning with white space");
+            Assert.AreEqual(new string[] { "user", "another" }, _extractor.ExtractMentionedScreennames("start @user mention and @another"), "Failed to extract mention for multiple users");
         }
         #endregion
+
+
     }
 }
