@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using TwitterText;
+using System.Collections.Generic;
 
 namespace twitter_text_cs_tests
 {
@@ -58,6 +59,38 @@ namespace twitter_text_cs_tests
         }
         #endregion
 
+        #region Hashtag Tests
+        [Test]
+        public void extract_hashtag_at_the_beginning_should_return_hashtag()
+        {
+            List<string> hashtags = _extractor.ExtractHashtags("#hashtag tweet");
 
+            Assert.AreEqual(hashtags, new List<string>(){"hashtag"});
+        }
+
+        [Test]
+        public void extract_hashtag_with_leading_space()
+        {
+            List<string> hashtags = _extractor.ExtractHashtags(" #hashtag tweet");
+
+            Assert.AreEqual(hashtags, new List<string>() { "hashtag" });
+        }
+
+        [Test]
+        public void extract_hashtag_mid_text()
+        {
+            List<string> hashtags = _extractor.ExtractHashtags("text #hashtag tweet");
+
+            Assert.AreEqual(hashtags, new List<string>() { "hashtag" });
+        }
+
+        [Test]
+        public void extract_multiple_hashtags()
+        {
+            List<string> hashtags = _extractor.ExtractHashtags("text #hashtag tweet #another");
+
+            Assert.AreEqual(hashtags, new List<string>() { "hashtag", "another" });
+        }
+        #endregion
     }
 }

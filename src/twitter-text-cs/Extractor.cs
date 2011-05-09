@@ -35,5 +35,21 @@ namespace TwitterText
             }
             return result.ToArray();
         }
+
+        public List<string> ExtractHashtags(string tweet)
+        {
+            if (string.IsNullOrEmpty(tweet))
+                return null;
+            var hashtags = new List<string>();
+            var hashtagExpression = new Regex("(^|[^0-9A-Z&/]+)(#|\uFF03)([0-9A-Z_]*[A-Z_]+#*)", RegexOptions.IgnoreCase);
+            var matches = hashtagExpression.Match(tweet);
+            
+            while (matches.Success)
+            {
+                hashtags.Add(matches.Result("$3"));
+                matches = matches.NextMatch();
+            }
+            return hashtags;
+        }
     }
 }
